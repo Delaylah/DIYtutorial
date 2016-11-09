@@ -30,6 +30,7 @@ body{
     font-family: roboto,Arial ;
     float: left;
     font-weight: 200;
+line-height: 42px;
 
 
 }
@@ -67,7 +68,7 @@ list-style: none;
   width: 900px;
   height: 50px;
   background: #fff;
- border-style: groove;
+ border: 1px solid #B71757;
   font-size: 16px;
   float: left;
   color: #3d3d3d;
@@ -289,3 +290,4 @@ fieldset {
     
      
 }
+
