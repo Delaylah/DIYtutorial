@@ -1,0 +1,52 @@
+I  - Šta je uradeno?
+
+
+-Kreirane skice koristeci moqups.com za desktop verziju 
+-Kreirano svega  6 podstranica i to index.html, projects.html, about.html, contact.html, vote.html, best.html 
+-Kreiran main.css 
+-U css je sadrzan grid ,to jeste, svih 12 particija unaprijed definisanih u slucaju potrebe koristenja  u daljem radu.
+-Sve su stranice respnzivne bez koristenja ikakvih frameworka itd.
+-kreirana skica za sve navedene podstranice koristeci moqups.com
+-Kreiran mobile.css za izgled za mobilne uredjaje predefinisan za media screen uredjaje sa manjim ekranima
+-mobile.css sadrzan u svim html. fajlovima  podstranica.
+-Kreirane 3 forme i to:
+                     -Pretraga (search, button)
+                     -Glasanje(number input, button)
+                     -Kontakt(email  input, text input)
+-Za FONT koristen je link sa vanjskim resursima i to google fonts. 
+-Ogranicen html jezik da je engleski iskljucivo. 
+
+
+
+II  - Šta nije uradeno?
+Svi trazeni zadaci su odradjeni. 
+
+
+
+ 
+Lista fajlova 
+
+
+
+DIY-folder 
+
+index.html
+projects.html
+about.html
+contact.html
+vote.html
+best.html
+
+images-folder-Sadrzi sve slike koristene u podstranicama.
+ 
+css-folder-Sadrzi 2 css fajla mobile i main. 
+
+
+
+
+
+
+
+
+
+ 
