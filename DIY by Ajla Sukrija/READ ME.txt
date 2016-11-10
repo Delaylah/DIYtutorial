@@ -19,11 +19,7 @@ I  - Šta je uradeno?
 
 
 II  - Šta nije uradeno?
-Svi trazeni zadaci su odradjeni. Jedina stvar sto nisam uradila jeste automatski alingment slika na index.htmltj da je padding uvijek
-15px ispod svake a da ne ovisi od velicine slike. Ono sto je potrebno da se uradi jeste da se uvede .js file koji ce automatski
-sracunati velicinu slike i. ja sam definisalal jedan red i 3 kolone tako svaka nova koja prelaxzi dimenzije prelazi u novo slobodno
-mjesto. Ne vidim kao rjesenje da kreiram stalno redove za svaku razlicitu sliku ili koristenjem media queria. Rjesenje sa media querima
-znam implementirati.   
+Svi trazeni zadaci su odradjeni.   
 
 
 
