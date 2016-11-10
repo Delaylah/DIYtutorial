@@ -3,6 +3,7 @@ body{
     background-color: 	#e3e3e4;
     padding: 0px;
     margin: 0px;
+    overflow-x: hidden;
 }
 
 .group:after {
