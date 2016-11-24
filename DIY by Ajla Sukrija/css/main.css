@@ -59,6 +59,7 @@ list-style: none;
     display: block;
 
 }
+
 .header .nav li a:hover{
     background-color: #d12767;
 }
@@ -222,7 +223,9 @@ list-style: none;
   padding: 10px;
   font-size: 15px;
 }
-
+#voting button[type="submit"]:disabled {
+    background: lightgray;
+}
 
 
 
@@ -252,14 +255,13 @@ fieldset {
 }
 
 
-#contact input[type="email"],
+#contact input,
 #contact textarea {
   width: 100%;
   background: #FFF;
   margin: 0 0 5px;
   padding: 10px;
 }
-
 
 #contact textarea {
   height: 100px;
@@ -277,6 +279,9 @@ fieldset {
   padding: 10px;
   font-size: 15px;
 }
+#contact button[type="submit"]:disabled {
+    background: lightgray;
+}
 
 
 
@@ -292,4 +297,12 @@ fieldset {
     
      
 }
+
+.validation-error {
+    color: red;
+}
+
+
+
+
 
