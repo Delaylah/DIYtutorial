@@ -7,6 +7,7 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>      
     <link href="css/main.css" rel="stylesheet"/>
     <link href="css/mobile.css" rel="stylesheet"/>
+    <script type="text/javascript" src="Skripta.js"></script>
   </head>
   <body>
   <div class="container">
@@ -36,10 +37,6 @@
    </ul> 
    </div>
 
-
-
-
-
   <div class="row group">
     <div class="col-4">
       <div class="index-content-box">   
@@ -54,13 +51,19 @@
   <form id="contact" action="" method="post">
     <h3>Contact!</h3>
     <fieldset>
-      <input placeholder="Your Email Address" type="email" tabindex="2" required>
+      <input placeholder="Your email address here..." id="email" type="text" onkeyup="doContactValidation()">
+      <span class="validation-error" id="emailMsg">Email is required</span>
     </fieldset>
     <fieldset>
-      <textarea placeholder="Type your message here...." tabindex="5" required></textarea>
+      <input placeholder="Your subject here..." type="text" id="subject" onkeyup="doContactValidation()">
+      <span class="validation-error" id="subjectMsg">Subject is required</span>
     </fieldset>
     <fieldset>
-      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+      <textarea placeholder="Type your message here...." id="message" onkeyup="doContactValidation()"></textarea>
+      <span class="validation-error" id="messageMsg">Email is required</span>
+    </fieldset>
+    <fieldset>
+      <button name="submit" type="submit" id="contact-submit" disabled>Submit</button>
     </fieldset>
   </form>
 </div>
