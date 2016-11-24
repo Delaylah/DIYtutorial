@@ -79,7 +79,23 @@ function showSlides(n) {
   slides[slideIndex - 1].style.display = "block";
   dots[slideIndex - 1].className += " active";
 }
+function initSlideshow() {
+  showSlides(1);
+}
 
 
-
+// AJAX Load
+function loadPage(path, onLoadFunc) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("page-content").innerHTML = this.responseText;
+     if (onLoadFunc) {
+       onLoadFunc();
+     }
+    }
+  };
+  xhttp.open("GET", path, true);
+  xhttp.send();
+}
 
