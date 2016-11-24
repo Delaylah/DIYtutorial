@@ -7,8 +7,13 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>      
     <link href="css/main.css" rel="stylesheet"/>
     <link href="css/mobile.css" rel="stylesheet"/>
+    <script type="text/javascript" src="Skripta.js"></script>
   </head>
   <body>
+
+
+
+
   <div class="container">
    <div class="header group">
      <div class="logo">
@@ -20,6 +25,7 @@
      </li>
      <li>
        <a href="projects.html" >Projects</a>
+
      </li>
      <li>
        <a href="vote.html" >Vote</a>
@@ -29,6 +35,7 @@
      </li>
      <li>
        <a href="about.html" >About</a>
+       
      </li>
      <li>
        <a href="contact.html" >Contact</a>
@@ -46,24 +53,27 @@
        </div>
     
     </div>
-     </div>
+    </div>
+
 
       <div class="col-4">
       <div class="index-content-box">
         <div class="containerform">  
   <form id="voting" action="" method="post">
     <h3>VOTE!</h3>
-    <fieldset>
-      <input placeholder="vote from 1-10" type="number" max="10" min="1" tabindex="2" required>
+    <fieldset>   
+       <span class="validation-error" id="votemssg">ifu want to submit, write down something!</span>  
+      <input placeholder="vote from 1-10" type="number" id="vote" max="10" min="1" onkeyup="doVoteValidation()">
     </fieldset>
     <fieldset>
-      <button name="submit" type="submit" id="voting-submit" data-submit="...Sending">VOTE!</button>
+      <button name="submit" type="submit" id="submitVote" disabled>VOTE!</button>
+     
+
     </fieldset>
   </form>
-  
+ 
     </div>
-     </div>
-     
+     </div>    
   </div>
   </div>
  
