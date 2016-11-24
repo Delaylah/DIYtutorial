@@ -1,0 +1,45 @@
+
+I  - Šta je uradeno?
+
+
+1. Kreirala Skripta.js , napisala funkciju za validaciju na SUBMIT prvo za kontakt, pa Vote ,pa Search tj. ako je submitano a text box je prazan onda prikazuje gresku
+i onemogucava ponovno submitane dok se ne popuni polje .
+
+2. Kreiran Carousel js, css, i includan u index.html, koristila sam w3schools kao primjer koda na osnovu kojeg sam napisala svoj Carousel.
+
+3. Galerija slika je na projects.html kreirala css. za popup i promejnu beckgrounda onclick, kreirala funkcije u js kojoj se prosljedjuje slika koja se povecava. 
+Slike ne idu preko cijelog ekrana, zavisno od rezolucije i formata one su fleksibilne radi samih orginala.
+
+4.koristeci Ajax napravljeno modifikovano reloadanje.potrebno je otvoriti index.html da bi radio stranica se mora izvrsavati na web serveru. 
+
+
+
+
+II  - Šta nije uradeno?
+pod b tree meni i dropdown. Posto sam se odlucila da ej za moju varijantu lakse da uradim galeriju i courosel za 5 b
+
+III - Bug-ovi koje ste primijetili ali niste stigli ispraviti, a znate rješenje (opis rješenja)
+0
+IV  - Bug-ovi koje ste primijetili ali ne znate rješenje
+0
+V  - Lista fajlova u formatu NAZIVFAJLA - Opis u vidu jedne recenice šta se u fajlu nalazi
+
+
+
+DIY-folder 
+
+index.html
+projects.html
+about.html
+contact.html
+vote.html
+best.html
+Skripta.js
+
+
+images-folder-Sadrzi sve slike koristene u podstranicama.
+ 
+css-folder-Sadrzi 4 css fajla mobile, main, corusel, projects-galery. 
+
+
+
