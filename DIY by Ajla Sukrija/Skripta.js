@@ -1,3 +1,21 @@
+
+//LOGIN FORME 
+
+function check(form)
+{
+
+if(form.username.value == "Ajla" && form.password.value == "1234")
+{
+window.open('about.html')
+}
+else
+{
+alert("wrong Username or Password")
+}
+}
+
+
+
 //FORMA VALIDACIJA ID I STAVLJANJE PLACEHOLDERA
 function checkField(fieldId, msgElId) {
   var fieldEl = document.getElementById(fieldId);
@@ -38,6 +56,35 @@ function doVoteValidation() {
     document.getElementById('submitVote').disabled = "disabled";
   } else {
     document.getElementById('submitVote').disabled = "";
+  }
+}
+
+function doEditGalleryValidation(isEdit) {
+  var num = checkField("arrayNumber", "arrayNumberMsg");
+  var title = checkField("title", "titleMsg");
+  var desc = checkField("message", "messageMsg");
+  var date = checkField("date", "dateMsg");
+  var url = true;
+  if (!isEdit) 
+    checkField("url", "urlMsg");
+  else
+    document.getElementById("urlMsg").style.display = "none";
+
+  if (!num || !title || !desc || !date || !url) {
+    document.getElementById('editGallerySubmit').disabled = "disabled";
+  } else {
+    document.getElementById('editGallerySubmit').disabled = "";
+  }
+}
+
+function doLoginValidation() {
+  var username = checkField("username", "usernameMsg");
+  var password = checkField("password", "passwordMsg");
+
+  if (!username ||!password) {
+    document.getElementById('loginSubmit').disabled = "disabled";
+  } else {
+    document.getElementById('loginSubmit').disabled = "";
   }
 }
 

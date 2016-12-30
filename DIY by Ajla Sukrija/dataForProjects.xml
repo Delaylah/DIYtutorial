@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<programs>
+  <program>
+    <arrayNumber>1</arrayNumber>
+    <date>2016-12-30</date>
+    <title>Dee Dee</title>
+    <message>Dee Dee is a main character and the secondary protagonist in the series, Dexter's Laboratory. She is Dexter's older sister, who is mostly seen destroying or ruining Dexter's lab in various ways.</message>
+    <image>uploads/Dee_Dee1483113101.jpg</image>
+  </program>
+  <program>
+    <arrayNumber>2</arrayNumber>
+    <date>2016-12-30</date>
+    <title>Ed, Edd n Eddy</title>
+    <message>Ed, Edd n Eddy is a Canadian-American animated comedy television series created by Danny Antonucci for Cartoon Network, and the sixth of the network's Cartoon Cartoons. The series revolves around three preteen boys: Ed, Edd Double D</message>
+    <image>uploads/All_3_eds1483113212.png</image>
+  </program>
+  <program>
+    <arrayNumber>3</arrayNumber>
+    <date>2016-12-30</date>
+    <title>Dexter's Laboratory</title>
+    <message>Dexter's Laboratory (commonly abbreviated as Dexter's Lab) is an American comic science fiction animated television series created by Genndy Tartakovsky for Cartoon Network, and the first of the network's Cartoon Cartoons. The series follows Dexter, a boy-genius and inventor with a secret laboratory</message>
+    <image>uploads/Dexter-dexters-laboratory1483113269.jpg</image>
+  </program>
+</programs>
