@@ -1,0 +1,53 @@
+ 
+Spirala 3
+ sta je uradjeno:
+ LOGIN korisnika iz xml fajla
+ admin pregled svih unosa edit i brisanje istih, validacija podataka , snimanje svih podataka u xml,
+ validacija podataka prilikom unosa
+ export u csv
+ export u pdf
+ 
+ Sta nije uradjeno.
+ Posto mi nisu odobrili openshif account jos  to su poslati naknadno i danamd se da cete mi uvaziti
+ 
+ 
+ fajlovi koji se koriste su 
+ i novi dodati folderi  su 
+ uPLOAD 
+ fpdf
+ images
+ css
+ 
+ 
+ i :
+ 
+ about.html
+baza.xml
+best.html
+contact.html
+css
+dataForProjects.xml
+delete.php
+Desktop moqups
+download_csv.php
+download_pdf.php
+editGallery.php
+edit_gallery.php
+edit_gallery_form.php
+fpdf
+home.php
+images
+index.html
+index.php
+login.css
+login.php
+logout.php
+Mobile moqups
+projects.php
+READ ME.txt
+save_new_gallery.php
+Skripta.js
+spirala2 READ ME.txt
+table.php
+uploads
+vote.html
