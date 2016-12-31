@@ -2,17 +2,24 @@
 Spirala 3
  sta je uradjeno:
  LOGIN korisnika iz xml fajla
- admin pregled svih unosa edit i brisanje istih, validacija podataka , snimanje svih podataka u xml,
- validacija podataka prilikom unosa
+ admin pregled svih unosa edit i brisanje istih, JS validacija podataka , snimanje svih podataka u xml,
+ prilikom snimanja podataka u XML vode se racuna o specijalnim HTML znakovima radi sprjecavanja XSS napada
+ unesene stavke se mogu vidjeti na pocetnoj stranici i klikom na meni PROJEKTI
  export u csv
  export u pdf
  
  
  
- //Sta nije uradjeno.
+ Sta nije uradjeno.
  //Posto mi nisu odobrili openshif account jos  to su poslati naknadno i danamd se da cete mi uvaziti
- 
+Pretraga sa prijedlogizma
+PHP validacija unosa
+
  OpenShifts deployed na adersu http://diy-ajla-route-diy-ajla.44fs.preview.openshiftapps.com/
+ Za logovanje kliknuti na LOGIN u gornjem meniju.
+	Username: user1
+	Password: pass1
+Nakon logovanja pojavi se dodatni meni sa opcijama za logovanog korisnika (pregled svih unosa i dodavanje novih)
  
  
  
