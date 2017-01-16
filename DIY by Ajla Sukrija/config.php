@@ -6,11 +6,10 @@ $mysql_pass = "";
 $mysql_db = "diy";*/
 
 // Openshift
-$mysql_host = getenv('OPENSHIFT_MYSQL_DB_HOST');
-//define('DB_PORT', getenv('OPENSHIFT_MYSQL_DB_PORT');
-$mysql_user = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
-$mysql_pass  = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
-$mysql_db = getenv('OPENSHIFT_APP_NAME');
+$mysql_host = "10.1.101.5";
+$mysql_user = "diyuser";
+$mysql_pass  = "diy2017sa";
+$mysql_db = "diydb";
 
 echo "HOST: ".$mysql_host;
 echo "USER: ".$mysql_user;
