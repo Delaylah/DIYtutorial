@@ -1,5 +1,11 @@
 <?php
 include "config.php";
+session_start();
+
+if (!isUserLogedIn()) {
+    http_response_code(500);
+    die("Samo logovani korisnici mogu izmijeniti sliku!");
+}
 
 if($_POST)
 {
@@ -10,8 +16,10 @@ if($_POST)
     // Selektuje postojeci red iz baze
     $imageId = $conn->real_escape_string($_POST['id']);
     $existingImageQuery = $conn->query("SELECT * FROM images WHERE id=$imageId");
-    if ($existingImageQuery->num_rows == 0)
+    if ($existingImageQuery->num_rows == 0) {
+        http_response_code(500);
         die("Slika ne postoji u bazi!");
+    }
 
     $existingImage = $existingImageQuery->fetch_assoc();
     $nameNew = $existingImage['file_name'];
@@ -31,14 +39,14 @@ if($_POST)
             $upload = file_put_contents("uploads/$nameNew",file_get_contents($url));
             if(!$upload)
             {
-                echo "Errow while copying file";
-                exit();
+                http_response_code(500);
+                die("Errow while copying file");
             }
         }
         else
         {
-            echo "Please upload only image files";
-            exit();
+            http_response_code(500);
+            die("Please upload only image files");
         }
     }
 
@@ -46,7 +54,8 @@ if($_POST)
     $description = $conn->real_escape_string($_POST['message']);
 
     if ($conn->query("UPDATE images SET title='$title', description='$description', file_name='$nameNew' WHERE id=$imageId")) {
-        echo "Uspješno ste izmijenili sliku!";
+        // Vraca putanju do slike da bi je prikazali na formi
+        echo "uploads/$nameNew";
     }
     else {
         echo "ERROR: ".$conn->error;

@@ -146,3 +146,65 @@ function loadPage(path, onLoadFunc) {
   xhttp.send();
 }
 
+// AJAX post data
+function ajaxPost(url, params, onFinish) {
+  var http = new XMLHttpRequest();
+  //var url = "get_data.php";
+  //var params = "lorem=ipsum&name=binny";
+  http.open("POST", url, true);
+
+  //Send the proper header information along with the request
+  http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  http.onreadystatechange = function() {//Call a function when the state changes.
+    if(http.readyState == 4 && onFinish) {
+      onFinish(http.responseText, http.status);
+    }
+  }
+  http.send(params);
+}
+
+
+
+// Vote for image
+function voteForImage(imageId, countElId) {
+  ajaxPost("vote.php", "imageId="+imageId, function(resp, status) {
+    if (status == 200) {
+      document.getElementById(countElId).innerHTML = resp;
+    } else {
+      alert(resp);
+    }
+  })
+}
+
+// Edit image
+function editImage() {
+  var imageId = encodeURIComponent(document.getElementById('imageId').value)
+  var title = encodeURIComponent(document.getElementById('title').value);
+  var description = encodeURIComponent(document.getElementById('message').value);
+  var imageUrl = encodeURIComponent(document.getElementById('url').value);
+
+  ajaxPost('edit_gallery.php', 'id='+imageId+'&title='+title+'&message='+description+'&url='+imageUrl, function(resp, status) {
+    if (status == 200) {
+      document.getElementById('imagePreview').src = resp;
+      alert("Uspješno ste izmijenili sliku.");
+    } else {
+      alert(resp);
+    }
+  })
+}
+
+function saveNewImage() {
+  var title = encodeURIComponent(document.getElementById('title').value);
+  var description = encodeURIComponent(document.getElementById('message').value);
+  var imageUrl = encodeURIComponent(document.getElementById('url').value);
+
+  ajaxPost('save_new_gallery.php', 'title='+title+'&message='+description+'&url='+imageUrl, function(resp, status) {
+    if (status == 200) {
+      alert("Uspješno ste dodali novu sliku.");
+      loadPage('table.php');
+    } else {
+      alert(resp);
+    }
+  })
+}

@@ -15,11 +15,11 @@ if (isset($_GET['num']))
 <div class="row group">
 <div class="col-4" style="margin-left:33%">
 
-        <form  id="contact" action="<?=(isset($image) ? 'edit_gallery.php' : 'save_new_gallery.php')?>" method="post" autocomplete="true">
+        <form  id="contact" autocomplete="true">
           <h3><?=(isset($image) ? "Edit" : "Add new")?> gallery</h3>
           <?php
           if (isset($image)) {
-            echo '<input type="hidden" name="id" value="'.$image['id'].'"/>';
+            echo '<input type="hidden" name="id" id="imageId" value="'.$image['id'].'"/>';
           }
           ?>
           <fieldset>
@@ -35,10 +35,10 @@ if (isset($_GET['num']))
             Your Photo URL: 
             <input type="text" id="url" name="url" onkeyup="doEditGalleryValidation(<?=(isset($image) ? 'true' : 'false')?>)" >
             <span class="validation-error" id="urlMsg">Image URL is required</span>
-            <?=(isset($image) ? '<img src="uploads/'.$image['file_name'].'" style="width:100px" />' : ""); ?>
+            <?=(isset($image) ? '<img src="uploads/'.$image['file_name'].'" id="imagePreview" style="width:100px" />' : ""); ?>
           </fieldset>
           <fieldset>
-            <button id="editGallerySubmit" type="submit" disabled>DONE</button>
+            <button id="editGallerySubmit" type="button" disabled onclick="<?=(isset($image) ? 'editImage()' : 'saveNewImage()')?>">DONE</button>
           </fieldset>
         </form>  
     </div>

@@ -21,13 +21,17 @@ $conn = mysqli_connect($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
 if (!$conn)
     die("Connection failed: " . mysqli_connect_error());
 
-$images = $conn->query("SELECT * FROM images ORDER BY created_at DESC");
+$images = $conn->query("SELECT i.*, (SELECT COUNT(*) FROM votes v WHERE v.image_id=i.id) AS votes FROM images i ORDER BY i.created_at DESC");
 
 while($image = $images->fetch_assoc())
 {
   ?>
     <div class="col-3">
       <div class="index-content-box">
+        <div class="like">
+            <img src="images/like.png" onclick="voteForImage(<?=$image['id']?>, 'currentVotes_<?=$image['id']?>')" />
+            <div class="current-votes" id="currentVotes_<?=$image['id']?>"><?=$image['votes']?></div>
+        </div>
         <img id="s1" src="uploads/<?=$image['file_name']?>" class="title-image" onclick="showFullImage('uploads/<?=$image['file_name']?>')" />
         <div class="description green">
           <?=$image['file_name']?>

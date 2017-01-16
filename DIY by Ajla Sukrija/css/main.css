@@ -131,6 +131,15 @@ list-style: none;
     top: 5px;
     right: 5px;
 }
+.index-content-box .like img {
+    cursor: pointer;
+}
+.index-content-box .like .current-votes {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif
+}
 
 .index-content-box .title-image{
     width: 100%;
@@ -277,7 +286,8 @@ fieldset {
   resize: none;
 }
 
-#contact button[type="submit"] {
+#contact button[type="submit"],
+#contact button[type="button"] {
   cursor: pointer;
   width: 108%;
   border: none;

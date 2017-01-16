@@ -46,7 +46,7 @@ include "config.php";
         if (!$conn)
             die("Connection failed: " . mysqli_connect_error());
 
-        $images = $conn->query("SELECT * FROM images ORDER BY created_at DESC");
+        $images = $conn->query("SELECT i.*, (SELECT COUNT(*) FROM votes v WHERE v.image_id=i.id) AS votes FROM images i ORDER BY i.created_at DESC");
         ?>
         <div class="col-4">
         <?php
@@ -59,7 +59,10 @@ include "config.php";
             }
         ?>
             <div class="index-content-box">
-                <a href="vote.php?imageId=<?=$image['id']?>" class="like"><img src="images/like.png" /></a>
+                <div class="like">
+                    <img src="images/like.png" onclick="voteForImage(<?=$image['id']?>, 'currentVotes_<?=$image['id']?>')" />
+                    <div class="current-votes" id="currentVotes_<?=$image['id']?>"><?=$image['votes']?></div>
+                </div>
                 <img id="s1" src="uploads/<?=$image['file_name']?>" class="title-image" />
                 <div class="description green">
                 <?=$image['title']?>
