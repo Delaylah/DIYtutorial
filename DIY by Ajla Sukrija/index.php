@@ -41,7 +41,7 @@ if(isset($_SESSION['valid']) && $_SESSION['valid']==true)
           <a href="#" onclick="loadPage('vote.html')">Vote</a>
         </li>
         <li>
-          <a href="#" onclick="loadPage('best.html')">Best</a>
+          <a href="#" onclick="loadPage('best.php')">Best</a>
         </li>
         <li>
           <a href="#" onclick="loadPage('about.html')">About</a>
@@ -73,16 +73,10 @@ Dobro došli
 echo $_SESSION['username']; 
 ?></b> (<a href="logout.php">Logout</a>)
 
-
-
-
     <div class="meni" style="float:right">
-
           <a href="#" onclick="loadPage('table.php')">EDIT GALLERY</a> | 
-          <a href="#" onclick="loadPage('edit_gallery_form.php')">ADD NEW</a>
-
-
-
+          <a href="#" onclick="loadPage('edit_gallery_form.php')">ADD NEW</a> | 
+          <a href="#" onclick="loadPage('import_xml.php')">IMPORT XML</a>
       </div>
       </div>
     <?php

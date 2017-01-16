@@ -1,25 +1,16 @@
 <?php
+include "config.php";
+
 if ($_GET && $_GET['num'])
 {
-    $xml=simplexml_load_file("dataForProjects.xml") or die("Error: Cannot create object");
-    foreach($xml->program as $key => $program) 
-    { 
-        if ($program->arrayNumber == $_GET['num'])
-        {
-            $dom=dom_import_simplexml($program);
-            $dom->parentNode->removeChild($dom);
+    $conn = mysqli_connect($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
+    if (!$conn)
+        die("Connection failed: " . mysqli_connect_error());
+    
+    $id = $conn->real_escape_string($_GET['num']);
+    $images = $conn->query("DELETE FROM images WHERE id=$id");
+    echo "Successfully deleted";
 
-            $doc = new DOMDocument('1.0');
-            $doc->formatOutput = true;
-            $doc->preserveWhiteSpace = true;
-            $doc->loadXML($xml->asXML(), LIBXML_NOBLANKS);
-            $doc->save('dataForProjects.xml');
-
-            echo "Successfully deleted";
-            exit();
-        }
-    }
-
-    echo "Can't find entiry to delete";
+    $conn->close();
 }
 ?>

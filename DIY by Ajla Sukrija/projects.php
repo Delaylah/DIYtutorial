@@ -1,3 +1,6 @@
+<?php
+include "config.php";
+?>
 <div class="search-form">
   <input type="search" name "pretraga" id="Search" class="search-field" />
   <button class="search-button" id="submit" onclick="doSearchValidation()">Button</button>
@@ -14,23 +17,29 @@
 
 <div class="row group">
 <?php
-$xml=simplexml_load_file("dataForProjects.xml") or die("Error: Cannot create object");
-foreach($xml->program as $key => $program) 
+$conn = mysqli_connect($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
+if (!$conn)
+    die("Connection failed: " . mysqli_connect_error());
+
+$images = $conn->query("SELECT * FROM images ORDER BY created_at DESC");
+
+while($image = $images->fetch_assoc())
 {
   ?>
     <div class="col-3">
       <div class="index-content-box">
-        <img id="s1" src="<?=$program->image?>" class="title-image" onclick="showFullImage('<?=$program->image?>')" />
+        <img id="s1" src="uploads/<?=$image['file_name']?>" class="title-image" onclick="showFullImage('uploads/<?=$image['file_name']?>')" />
         <div class="description green">
-          <?=$program->title?>
+          <?=$image['file_name']?>
           <div>
-            <small><?=$program->message?></small>
+            <small><?=$image['description']?></small>
           </div>
         </div>
       </div>
     </div>
   <?php
 }
+$conn->close();
 ?>
 </div>
 

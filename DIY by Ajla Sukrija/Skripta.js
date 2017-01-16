@@ -60,17 +60,17 @@ function doVoteValidation() {
 }
 
 function doEditGalleryValidation(isEdit) {
-  var num = checkField("arrayNumber", "arrayNumberMsg");
+  //var num = checkField("arrayNumber", "arrayNumberMsg");
   var title = checkField("title", "titleMsg");
   var desc = checkField("message", "messageMsg");
-  var date = checkField("date", "dateMsg");
+  //var date = checkField("date", "dateMsg");
   var url = true;
   if (!isEdit) 
     checkField("url", "urlMsg");
   else
     document.getElementById("urlMsg").style.display = "none";
 
-  if (!num || !title || !desc || !date || !url) {
+  if (!title || !desc || !url) {
     document.getElementById('editGallerySubmit').disabled = "disabled";
   } else {
     document.getElementById('editGallerySubmit').disabled = "";

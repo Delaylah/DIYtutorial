@@ -1,3 +1,6 @@
+<?php
+include "config.php";
+?>
 <div onload="showSlides(1)">
     <div class="search-form">
         <input type="search" name "pretraga" id="Search" class="search-field" />
@@ -39,23 +42,37 @@
 
     <div class="row group">
         <?php
-        $xml=simplexml_load_file("dataForProjects.xml") or die("Error: Cannot create object");
-        foreach($xml->program as $key => $program) 
-        {
+        $conn = mysqli_connect($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
+        if (!$conn)
+            die("Connection failed: " . mysqli_connect_error());
+
+        $images = $conn->query("SELECT * FROM images ORDER BY created_at DESC");
         ?>
-            <div class="col-4">
+        <div class="col-4">
+        <?php
+        $perColumn = ceil($images->num_rows / 3);
+        $displayedImages = 0;
+        while($image = $images->fetch_assoc())
+        {
+            if ($displayedImages > 0 && $displayedImages % 2 == 0) {
+                echo '</div><div class="col-4">';
+            }
+        ?>
             <div class="index-content-box">
-                <img id="s1" src="<?=$program->image?>" class="title-image" />
+                <a href="vote.php?imageId=<?=$image['id']?>" class="like"><img src="images/like.png" /></a>
+                <img id="s1" src="uploads/<?=$image['file_name']?>" class="title-image" />
                 <div class="description green">
-                <?=$program->title?>
+                <?=$image['title']?>
                 <div>
-                    <small><?=$program->message?></small>
+                    <small><?=$image['description']?></small>
                 </div>
                 </div>
-            </div>
             </div>
         <?php
+            $displayedImages++;
         }
+        $conn->close();
         ?>
+        </div>
     </div>
 </div>

@@ -1,3 +1,6 @@
+<?php
+include "config.php";
+?>
 
 <a href="download_csv.php">Download CSV</a>
 <a href="download_pdf.php">Download PDF</a>
@@ -12,18 +15,25 @@
     <th></th>
   </tr>
 
-      <?php
-$xml=simplexml_load_file("dataForProjects.xml") or die("Error: Cannot create object");
-foreach($xml->program as $program) { 
+<?php
+$conn = mysqli_connect($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
+if (!$conn)
+  die("Connection failed: " . mysqli_connect_error());
+
+$images = $conn->query("SELECT * FROM images ORDER BY created_at DESC");
+
+while($image = $images->fetch_assoc()) { 
   echo "<tr>";
-  echo "<td>".$program->arrayNumber . "</td>";
-  echo "<td>".$program->title . "</td>";
-  echo "<td>".$program->message . "</td>";
-  echo "<td>".$program->date . "</td>";
-  echo '<td><a href="'.$program->image . '" target="_blank">'.$program->image.'</a></td>';
-  echo '<td><a href="#" onclick="loadPage(\'edit_gallery_form.php?num='.$program->arrayNumber.'\', function() { doEditGalleryValidation(true); })">Edit</a> <a href="delete.php?num='.$program->arrayNumber.'">Delete</a>';
+  echo "<td>".$image['id'] . "</td>";
+  echo "<td>".$image['title'] . "</td>";
+  echo "<td>".$image['description']  . "</td>";
+  echo "<td>".$image['created_at']  . "</td>";
+  echo '<td><a href="uploads/'.$image['file_name'] . '" target="_blank">'.$image['file_name'] .'</a></td>';
+  echo '<td><a href="#" onclick="loadPage(\'edit_gallery_form.php?num='.$image['id'].'\', function() { doEditGalleryValidation(true); })">Edit</a> <a href="delete.php?num='.$image['id'].'">Delete</a>';
   echo "</tr>";   
 } 
+
+$conn->close();
 ?>
 
 

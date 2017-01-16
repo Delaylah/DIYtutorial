@@ -122,6 +122,14 @@ list-style: none;
 
 .index-content-box {
     margin-bottom: 5px;
+    position: relative;
+}
+
+.index-content-box .like {
+    position: absolute;    
+    display: block;
+    top: 5px;
+    right: 5px;
 }
 
 .index-content-box .title-image{

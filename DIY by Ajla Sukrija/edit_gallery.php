@@ -1,6 +1,21 @@
 <?php
+include "config.php";
+
 if($_POST)
 {
+    $conn = mysqli_connect($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
+    if (!$conn)
+        die("Connection failed: " . mysqli_connect_error());
+
+    // Selektuje postojeci red iz baze
+    $imageId = $conn->real_escape_string($_POST['id']);
+    $existingImageQuery = $conn->query("SELECT * FROM images WHERE id=$imageId");
+    if ($existingImageQuery->num_rows == 0)
+        die("Slika ne postoji u bazi!");
+
+    $existingImage = $existingImageQuery->fetch_assoc();
+    $nameNew = $existingImage['file_name'];
+
     // Ako je definisan url, download sliku ponovo
     if (isset($_POST['url']) && !empty($_POST['url']))
     {
@@ -11,7 +26,7 @@ if($_POST)
         $nameNew = $name.".".$ext;
 
         // Uploaduje file
-        if($ext == "jpg" or $ext == "png" or $ext == "gif" or $ext == "doc" or $ext == "docx" or $ext == "pdf")
+        if($ext == "jpg" or $ext == "png" or $ext == "gif")
         {
             $upload = file_put_contents("uploads/$nameNew",file_get_contents($url));
             if(!$upload)
@@ -22,44 +37,21 @@ if($_POST)
         }
         else
         {
-            echo "Please upload only image/document files";
+            echo "Please upload only image files";
             exit();
         }
     }
 
-    $xml = simplexml_load_file("dataForProjects.xml");
+    $title = $conn->real_escape_string($_POST['title']);
+    $description = $conn->real_escape_string($_POST['message']);
 
-    $arrayNumber = $_POST['arrayNumber'];
-    $title = $_POST['title'];
-    $date = $_POST['date'];
-    $message = $_POST['message'];
-    $url = $_POST['url'];
-
-    $xml=simplexml_load_file("dataForProjects.xml") or die("Error: Cannot create object");
-    foreach($xml->program as $key => $program) 
-    { 
-        if ($program->arrayNumber == $_POST['arrayNumber'])
-        {
-            $program->arrayNumber = htmlentities($arrayNumber, ENT_COMPAT, 'UTF-8', false);
-            $program->date = htmlentities($date, ENT_COMPAT, 'UTF-8', false);
-            $program->title = htmlentities($title, ENT_COMPAT, 'UTF-8', false);
-            $program->message = htmlentities($message, ENT_COMPAT, 'UTF-8', false);
-            if (isset($nameNew))
-            {
-                $program->image = "uploads/$nameNew";
-            }
-
-            // Save as xml
-            $doc = new DOMDocument('1.0');
-            $doc->formatOutput = true;
-            $doc->preserveWhiteSpace = true;
-            $doc->loadXML($xml->asXML(), LIBXML_NOBLANKS);
-            $doc->save('dataForProjects.xml');
-
-            echo "Project edited";
-
-            break;
-        }
+    if ($conn->query("UPDATE images SET title='$title', description='$description', file_name='$nameNew' WHERE id=$imageId")) {
+        echo "Uspješno ste izmijenili sliku!";
     }
+    else {
+        echo "ERROR: ".$conn->error;
+    }
+
+    $conn->close();
 }
 ?>

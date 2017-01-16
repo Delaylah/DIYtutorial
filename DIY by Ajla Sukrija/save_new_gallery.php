@@ -1,57 +1,53 @@
 <?php
+include "config.php";
+session_start();
+
 if($_POST)
 {
-  $url = $_POST['url'];
-  $name = basename($url);
-  list($txt, $ext) = explode(".", $name);
-  $name = $txt.time();
-  $name = $name.".".$ext;
- 
-  // Uploaduje file
-  if($ext == "jpg" or $ext == "png" or $ext == "gif" or $ext == "doc" or $ext == "docx" or $ext == "pdf")
+  // Create connection
+  $conn = mysqli_connect($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
+  if (!$conn)
+    die("Connection failed: " . mysqli_connect_error());
+
+  try
   {
-    $upload = file_put_contents("uploads/$name",file_get_contents($url));
-    if(!$upload)
+    $urlName = basename($_POST['url']);
+    list($name, $ext) = explode(".", $urlName);
+    $fileName = $name.time();
+    $fileName = $fileName.".".$ext;
+    // Download file na server
+    if($ext == "jpg" or $ext == "png" or $ext == "gif")
     {
-      echo "Errow while copying file";
+      $upload = file_put_contents("uploads/$fileName", file_get_contents($_POST['url']));
+      if(!$upload)
+      {
+        echo "Errow while copying file";
+        exit();
+      }
+    }
+    else
+    {
+      echo "Please upload only image files";
       exit();
     }
+
+    // Snima u bazu
+    $title = $conn->real_escape_string($_POST['title']);
+    $description = $conn->real_escape_string($_POST['message']);
+    $fileNameForDb = $conn->real_escape_string($fileName);
+    $userId = $conn->real_escape_string($_SESSION['user_id']);
+
+    $sql = "INSERT INTO images (title, description, file_name, user_id, created_at) VALUES ('$title', '$description', '$fileNameForDb', '$userId', NOW())";
+    if ($conn->query($sql)) {
+      echo "Project added";
+    }
+    else {
+      echo "Error while adding project to DB";
+    }
   }
-  else
+  finally
   {
-    echo "Please upload only image/document files";
-    exit();
-  }
-
-  $xml = simplexml_load_file("dataForProjects.xml");
-
-  $arrayNumber = $_POST['arrayNumber'];
-  $title = $_POST['title'];
-  $date = $_POST['date'];
-  $message = $_POST['message'];
-  $url = $_POST['url'];
-
-
-  $arrayNumber = htmlentities($arrayNumber, ENT_COMPAT, 'UTF-8', false);
-  $date = htmlentities($date, ENT_COMPAT, 'UTF-8', false);
-  $title = htmlentities($title, ENT_COMPAT, 'UTF-8', false);
-  $message = htmlentities($message, ENT_COMPAT, 'UTF-8', false);
-  $url = htmlentities($url, ENT_COMPAT, 'UTF-8', false);
-
-
-  $newElement = $xml->addChild("program");
-  $newElement->addChild('arrayNumber', $arrayNumber);
-  $newElement->addChild('date', $date);
-  $newElement->addChild('title', $title);
-  $newElement->addChild('message', $message);
-  $newElement->addChild('image',"uploads/$name");
-
-  $doc = new DOMDocument('1.0');
-  $doc->formatOutput = true;
-  $doc->preserveWhiteSpace = true;
-  $doc->loadXML($xml->asXML(), LIBXML_NOBLANKS);
-  $doc->save('dataForProjects.xml');
-
-  echo "Project added";
+    $conn->close();
+  } 
 }
 ?>

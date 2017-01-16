@@ -1,15 +1,22 @@
 <?php
+include "config.php";
 header("Content-Type: text/csv");
 header("Content-Disposition: attachment;filename=projects.csv");
 
-$xml=simplexml_load_file("dataForProjects.xml") or die("Error: Cannot create object");
+$conn = mysqli_connect($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
+if (!$conn)
+    die("Connection failed: " . mysqli_connect_error());
+
+$images = $conn->query("SELECT * FROM images ORDER BY created_at DESC");
+
 //ob_start();
 $df = fopen("php://output", 'w');
-fputcsv($df, array("arrayNumber", "date", "title", "message", "image",));
-foreach($xml->program as $key => $program) 
+fputcsv($df, array("id", "date", "title", "description", "image",));
+while($image = $images->fetch_assoc())
 {
-    fputcsv($df, array($program->arrayNumber, $program->date, $program->title, $program->message, $program->image));
+    fputcsv($df, array($image['id'], $image['created_at'], $image['title'], $image['description'], $image['file_name']));
 }
 fclose($df);
+$conn->close();
 //return ob_get_clean();
 ?>
