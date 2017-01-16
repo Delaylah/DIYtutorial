@@ -29,7 +29,7 @@ while($image = $images->fetch_assoc()) {
   echo "<td>".$image['description']  . "</td>";
   echo "<td>".$image['created_at']  . "</td>";
   echo '<td><a href="uploads/'.$image['file_name'] . '" target="_blank">'.$image['file_name'] .'</a></td>';
-  echo '<td><a href="#" onclick="loadPage(\'edit_gallery_form.php?num='.$image['id'].'\', function() { doEditGalleryValidation(true); })">Edit</a> <a href="delete.php?num='.$image['id'].'">Delete</a>';
+  echo '<td><a href="#" onclick="loadPage(\'edit_gallery_form.php?num='.$image['id'].'\', function() { doEditGalleryValidation(true); })">Edit</a> <a href="#" onclick="deleteImage('.$image['id'].')">Delete</a>';
   echo "</tr>";   
 } 
 

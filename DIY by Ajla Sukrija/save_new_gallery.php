@@ -32,9 +32,9 @@ if($_POST)
     }
 
     // Snima u bazu
-    $title = $conn->real_escape_string($_POST['title']);
-    $description = $conn->real_escape_string($_POST['message']);
-    $fileNameForDb = $conn->real_escape_string($fileName);
+    $title = $conn->real_escape_string(htmlspecialchars($_POST['title']));
+    $description = $conn->real_escape_string(htmlspecialchars($_POST['message']));
+    $fileNameForDb = $conn->real_escape_string(htmlspecialchars($fileName));
     $userId = $conn->real_escape_string($_SESSION['user_id']);
 
     $sql = "INSERT INTO images (title, description, file_name, user_id, created_at) VALUES ('$title', '$description', '$fileNameForDb', '$userId', NOW())";

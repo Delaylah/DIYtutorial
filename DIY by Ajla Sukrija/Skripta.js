@@ -208,3 +208,14 @@ function saveNewImage() {
     }
   })
 }
+
+function deleteImage(imageId) {
+  ajaxPost('delete.php', 'imageId='+encodeURIComponent(imageId), function(resp, status) {
+    if (status == 200) {
+      alert("Uspješno ste obrisali sliku.");
+      loadPage('table.php');
+    } else {
+      alert(resp);
+    }
+  })
+}

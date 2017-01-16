@@ -50,8 +50,8 @@ if($_POST)
         }
     }
 
-    $title = $conn->real_escape_string($_POST['title']);
-    $description = $conn->real_escape_string($_POST['message']);
+    $title = $conn->real_escape_string(htmlspecialchars($_POST['title']));
+    $description = $conn->real_escape_string(htmlspecialchars($_POST['message']));
 
     if ($conn->query("UPDATE images SET title='$title', description='$description', file_name='$nameNew' WHERE id=$imageId")) {
         // Vraca putanju do slike da bi je prikazali na formi
