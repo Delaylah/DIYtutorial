@@ -11,6 +11,12 @@ d) Napravite hosting vaše stranice na OpenShift, link na stranicu navedite u Re
 e) Napravite jednu metodu REST web servisa koja vraca podatke u obliku JSON-a (1 bod)
 f) Testirajte web servis koristeci POSTMAN i priložite odgovarajuci izvještaj (screenshot 3-4 razlicita slucaja upotreba) (1 bod)
 
+
+
++login user:ajla password: sarajevo
+
+
+
 Sta je uradjeno:
 a) Kreirana baza sa 3 povezane tabele. Tabele su:
     - images (FK na users)
@@ -27,6 +33,7 @@ e) Rest metoda se nalazi na adresi http://diy-ajla-route-diy-ajla.44fs.preview.o
     - Text sadrzan u opisu (descriptionContains)
     - Minimalni broj glasova (moreVotesThan)
 
+ 
 Fajlovi koji su izmijenjeni u spirali 4:
 - api.php
 - best.php
