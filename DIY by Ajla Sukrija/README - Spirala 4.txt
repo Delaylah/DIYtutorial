@@ -22,6 +22,7 @@ a) Kreirana baza sa 3 povezane tabele. Tabele su:
     - images (FK na users)
     - users
     - votes (FK na users i images)
+   Dump baze se nalazi u fajlu diydb.sql
 b) Stare podatke koji su bili snimljeni u XML-u je moguce importovati. Kada se korisnik loguje u meniju mu se pojavi opcija "IMPORT XML". 
    XML file se nalazi na serveru i nije ga potrebno uploadovati. Ako se komanda izvrši više puta, dupli podaci se nece importovati.
 c) Umjesto u XML fajlovima, svi podaci se cuvaju u MySQL bazi podataka. 
@@ -32,6 +33,11 @@ e) Rest metoda se nalazi na adresi http://diy-ajla-route-diy-ajla.44fs.preview.o
     - Text sadrzan u naslovu (titleContains)
     - Text sadrzan u opisu (descriptionContains)
     - Minimalni broj glasova (moreVotesThan)
+f) Screenshot-i poziva apija se nalaze u folderu postman
+
+Korisnički podaci za logovanje:
+User: ajla
+Pass: sarajevo
 
  
 Fajlovi koji su izmijenjeni u spirali 4:

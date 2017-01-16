@@ -2,6 +2,11 @@
 include "config.php";
 session_start();
 
+if (!isUserLogedIn()) {
+    http_response_code(500);
+    die("Samo logovani korisnici mogu dodati sliku!");
+}
+
 if($_POST)
 {
   // Create connection
