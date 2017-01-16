@@ -13,8 +13,6 @@ f) Testirajte web servis koristeci POSTMAN i priložite odgovarajuci izvještaj 
 
 
 
-+login user:ajla password: sarajevo
-
 
 
 Sta je uradjeno:
