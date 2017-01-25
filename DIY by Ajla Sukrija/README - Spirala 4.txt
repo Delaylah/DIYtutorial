@@ -25,8 +25,8 @@ b) Stare podatke koji su bili snimljeni u XML-u je moguce importovati. Kada se k
    XML file se nalazi na serveru i nije ga potrebno uploadovati. Ako se komanda izvrši više puta, dupli podaci se nece importovati.
 c) Umjesto u XML fajlovima, svi podaci se cuvaju u MySQL bazi podataka. 
    Prilikom slanja upita na bazu i snimanja podataka vodila sam racuna o SQL injectionima i XSS rajivostima, koristeci mysqli_real_escape_string() i htmlspecialchars() funkcije.
-d) Stranica je hostana na OpenShift-u, adresa je http://diy-ajla-route-diy-ajla.44fs.preview.openshiftapps.com/
-e) Rest metoda se nalazi na adresi http://diy-ajla-route-diy-ajla.44fs.preview.openshiftapps.com/api.php
+d) Stranica je hostana na OpenShift-u, adresa je http://diy-php-new2-diy-ajla-new.44fs.preview.openshiftapps.com/
+e) Rest metoda se nalazi na adresi http://diy-php-new2-diy-ajla-new.44fs.preview.openshiftapps.com/api.php
    Metoda vraca listu svih slika u bazi. Podatke je moguce filtrirati po slijedecim kriterijima:
     - Text sadrzan u naslovu (titleContains)
     - Text sadrzan u opisu (descriptionContains)
